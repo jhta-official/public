@@ -122,7 +122,7 @@
   .sec-desc.dark  { color: #666; max-width: 640px; }
 
   /* MEMBERSHIP CARDS */
-  .mem-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; margin-top: 8px; }
+  .mem-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 8px; }
   .mem-card {
     background: #101D38;
     border: 1px solid rgba(255,255,255,0.06);
@@ -229,6 +229,38 @@
     text-decoration-color: rgba(255,255,255,0.4);
   }
   .mem-card.featured .mem-benefits li.disabled::before { color: rgba(255,255,255,0.4); }
+  .mem-card.suspended { opacity: 0.95; }
+  .mem-suspend-badge {
+    position: absolute;
+    top: 14px; right: 14px;
+    background: rgba(255,107,107,0.16);
+    color: #FF8B8B;
+    font-size: 9.5px;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    padding: 4px 9px;
+    border-radius: 3px;
+    border: 0.5px solid rgba(255,107,107,0.4);
+    font-family: "Inter", "Noto Sans JP", sans-serif;
+    z-index: 2;
+  }
+  .mem-suspend-note {
+    margin: 0 24px 16px;
+    padding: 12px 14px;
+    background: rgba(255,107,107,0.08);
+    border: 0.5px solid rgba(255,107,107,0.32);
+    border-left: 3px solid #FF8B8B;
+    border-radius: 4px;
+    font-size: 12px;
+    color: rgba(255,255,255,0.85);
+    line-height: 1.6;
+  }
+  .mem-suspend-note strong { color: #FFB3B3; font-weight: 700; display: block; margin-bottom: 4px; font-size: 12.5px; }
+  .mem-suspend-note a {
+    color: var(--gold-light);
+    border-bottom: 1px solid var(--gold-dim);
+  }
+  .mem-suspend-note a:hover { border-bottom-color: var(--gold); }
   .mem-benefits li.muted { color: rgba(255,255,255,0.4); }
   .mem-benefits li.muted::before {
     content: "\2715";
@@ -490,12 +522,6 @@
   }
   @media (min-width: 769px) and (max-width: 1080px) {
     .mem-grid { grid-template-columns: repeat(2, 1fr); }
-    .info-cards { grid-template-columns: 1fr; }
-    .flow { gap: 20px; }
-    .flow-step:not(:last-child)::after { display: none; }
-    .footer-top { flex-direction: column; gap: 20px; }
-    .footer-links { flex-direction: column; gap: 12px; }
-    .cta-btns { flex-direction: column; align-items: center; }
   }
 </style>
 </head>
@@ -591,13 +617,18 @@
   <p class="sec-desc muted">目的やご活動に合わせた4つの会員種別をご用意しています。</p>
   <div class="mem-grid">
 
-    <div class="mem-card">
+    <div class="mem-card suspended">
+      <span class="mem-suspend-badge">募集停止中</span>
       <div class="mem-head">
         <div class="mem-name">法人特別会員</div>
         <div class="mem-name-en">Corporate Premium Member</div>
         <div class="mem-fee-label">年会費</div>
         <div class="mem-fee">¥300,000 <small>/ 年</small></div>
         <div class="mem-tax">※ 税込</div>
+      </div>
+      <div class="mem-suspend-note">
+        <strong>現在募集停止中です。</strong>
+        まずは<a href="join.html">無料会員</a>へご登録ください。
       </div>
       <p class="mem-desc">協会の活動に深く関わりたい企業・団体向けの最上位会員枠です。WG・EC参加など全ての活動に参加できます。</p>
       <ul class="mem-benefits">
@@ -610,13 +641,18 @@
       </ul>
     </div>
 
-    <div class="mem-card">
+    <div class="mem-card suspended">
+      <span class="mem-suspend-badge">募集停止中</span>
       <div class="mem-head">
         <div class="mem-name">法人一般会員</div>
         <div class="mem-name-en">Corporate General Member</div>
         <div class="mem-fee-label">年会費</div>
         <div class="mem-fee">¥100,000 <small>/ 年</small></div>
         <div class="mem-tax">※ 税込</div>
+      </div>
+      <div class="mem-suspend-note">
+        <strong>現在募集停止中です。</strong>
+        まずは<a href="join.html">無料会員</a>へご登録ください。
       </div>
       <p class="mem-desc">協会のネットワークや情報にアクセスしたい企業・団体向けの標準会員枠です。</p>
       <ul class="mem-benefits">
@@ -645,25 +681,6 @@
         <li>情報提供</li>
         <li class="disabled">ロゴ掲出</li>
         <li class="disabled">セミナー登壇</li>
-      </ul>
-    </div>
-
-    <div class="mem-card">
-      <div class="mem-head">
-        <div class="mem-name">スポンサー会員</div>
-        <div class="mem-name-en">Sponsor Member</div>
-        <div class="mem-fee-label">年会費</div>
-        <div class="mem-fee consult">応相談</div>
-        <div class="mem-tax">&nbsp;</div>
-      </div>
-      <p class="mem-desc">JHTAの活動をスポンサーとして支援いただける企業向けの会員枠です。露出強化やイベント協賛の機会をご提供します。</p>
-      <ul class="mem-benefits">
-        <li class="disabled">WG傍聴</li>
-        <li class="muted">EC参加</li>
-        <li class="disabled">勉強会参加</li>
-        <li class="muted">情報提供</li>
-        <li>露出強化</li>
-        <li>イベント協賛特典</li>
       </ul>
     </div>
 
@@ -699,7 +716,6 @@
           <th>無料会員</th>
           <th>法人一般会員</th>
           <th class="gold-col">法人特別会員</th>
-          <th class="gold-col">スポンサー会員</th>
         </tr>
       </thead>
       <tbody>
@@ -708,13 +724,11 @@
           <td><span class="partial">レポート閲覧</span></td>
           <td><span class="check">✓ 既存WGのみ</span></td>
           <td><span class="check">✓ 全WG</span></td>
-          <td><span class="dash">—</span></td>
         </tr>
         <tr>
           <td>エグゼクティブコミッティ（EC）参加</td>
           <td><span class="dash">—</span></td>
           <td><span class="dash">—</span></td>
-          <td><span class="check">✓</span></td>
           <td><span class="check">✓</span></td>
         </tr>
         <tr>
@@ -722,11 +736,9 @@
           <td><span class="check">✓</span></td>
           <td><span class="check">✓</span></td>
           <td><span class="check">✓</span></td>
-          <td><span class="dash">—</span></td>
         </tr>
         <tr>
           <td>情報提供</td>
-          <td><span class="check">✓</span></td>
           <td><span class="check">✓</span></td>
           <td><span class="check">✓</span></td>
           <td><span class="check">✓</span></td>
@@ -736,18 +748,9 @@
           <td><span class="dash">—</span></td>
           <td><span class="partial">小ロゴ</span></td>
           <td><span class="check">✓ 大ロゴ</span></td>
-          <td><span class="check">✓ 露出強化</span></td>
         </tr>
         <tr>
           <td>セミナー登壇</td>
-          <td><span class="dash">—</span></td>
-          <td><span class="dash">—</span></td>
-          <td><span class="check">✓</span></td>
-          <td><span class="dash">—</span></td>
-        </tr>
-        <tr>
-          <td>イベント協賛特典</td>
-          <td><span class="dash">—</span></td>
           <td><span class="dash">—</span></td>
           <td><span class="dash">—</span></td>
           <td><span class="check">✓</span></td>
@@ -757,7 +760,6 @@
           <td>無料</td>
           <td>¥100,000</td>
           <td>¥300,000</td>
-          <td>応相談</td>
         </tr>
       </tbody>
     </table>
@@ -855,7 +857,7 @@
         <span class="faq-q-text">個人でも入会できますか？</span>
         <span class="faq-chevron">▼</span>
       </summary>
-      <p class="faq-a">無料会員枠にて、協会が定める条件を満たす個人の方にもご参加いただけます。詳細は事務局（<a href="/cdn-cgi/l/email-protection#cbbbb98ba1e6a3bfaae5a4b9ac"><span class="__cf_email__" data-cfemail="b0c0c2f0da9dd8c4d19edfc2d7">[email&#160;protected]</span></a>）までお問い合わせください。</p>
+      <p class="faq-a">無料会員枠にて、協会が定める条件を満たす個人の方にもご参加いただけます。詳細は事務局（<a href="/cdn-cgi/l/email-protection#374745775d1a5f435619584550"><span class="__cf_email__" data-cfemail="fa8a88ba90d7928e9bd495889d">[email&#160;protected]</span></a>）までお問い合わせください。</p>
     </details>
 
     <details class="faq-item">
@@ -926,7 +928,7 @@
       <p class="footer-info">
         日本ホスピタリティテクノロジー協会（JHTA）<br>
         〒102-0093 東京都千代田区平河町2-5-5 全国旅館会館4階<br>
-        Email: <a href="/cdn-cgi/l/email-protection#3a4a487a5017524e5b1455485d" style="color:rgba(255,255,255,0.35);text-decoration:none;"><span class="__cf_email__" data-cfemail="5c2c2e1c367134283d72332e3b">[email&#160;protected]</span></a>
+        Email: <a href="/cdn-cgi/l/email-protection#c6b6b486acebaeb2a7e8a9b4a1" style="color:rgba(255,255,255,0.35);text-decoration:none;"><span class="__cf_email__" data-cfemail="8afaf8cae0a7e2feeba4e5f8ed">[email&#160;protected]</span></a>
       </p>
     </div>
     <nav class="footer-links">
