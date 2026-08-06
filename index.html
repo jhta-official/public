@@ -327,6 +327,43 @@
   .sec-desc.muted { color: var(--text-muted); max-width: 640px; }
   .sec-desc.dark  { color: #666; max-width: 640px; }
 
+  /* ===== PARTNER BANNER ===== */
+  .partner-banner {
+    background: #fff;
+    border-bottom: 1px solid #e5e8ee;
+    padding: 28px var(--gutter);
+  }
+  .partner-banner-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+    flex-wrap: wrap;
+    background: #F7F8FB;
+    border: 1px solid #e5e8ee;
+    border-radius: 8px;
+    padding: 22px 32px;
+  }
+  .partner-banner-left { display: flex; align-items: center; gap: 24px; flex-wrap: wrap; }
+  .partner-banner-logo img { height: 40px; width: auto; }
+  .partner-banner-text { font-size: 13.5px; color: #444; line-height: 1.7; }
+  .partner-banner-text strong { color: var(--navy-sec); font-weight: 700; }
+  .partner-banner-btn {
+    background: var(--navy-deep);
+    color: #fff;
+    padding: 11px 26px;
+    border-radius: 3px;
+    font-size: 13px;
+    font-weight: 700;
+    white-space: nowrap;
+    transition: opacity .2s, transform .2s;
+  }
+  .partner-banner-btn:hover { opacity: 0.85; transform: translateY(-1px); }
+  @media (max-width: 640px) {
+    .partner-banner-inner { flex-direction: column; align-items: flex-start; padding: 22px; }
+    .partner-banner-btn { width: 100%; text-align: center; }
+  }
+
   /* ===== NEWS ===== */
   .news-section {
     background: #F5F6F8;
@@ -935,6 +972,19 @@
         <p class="partner-desc">米国のホテル業界リーダーで構成されるAI推進の非営利団体。JHTAはSupporting Organizationとして公式サイトに掲載されており、AI活用の知見共有を推進しています。</p>
       </div>
     </div>
+  </div>
+</section>
+
+<!-- ===== PARTNER BANNER ===== -->
+<section class="partner-banner">
+  <div class="wrap partner-banner-inner">
+    <div class="partner-banner-left">
+      <a href="https://lp.japan-hospitality.ai/" target="_blank" rel="noopener" class="partner-banner-logo" aria-label="AIおもてなしアカデミー">
+        <img src="assets/logos/ai-omotenashi-academy.svg" alt="AIおもてなしアカデミー" />
+      </a>
+      <div class="partner-banner-text"><strong>AIおもてなしアカデミー</strong> — 宿泊業界向けAI活用人材育成プログラムを開講中</div>
+    </div>
+    <a href="https://lp.japan-hospitality.ai/" target="_blank" rel="noopener" class="partner-banner-btn">詳しく見る</a>
   </div>
 </section>
 
